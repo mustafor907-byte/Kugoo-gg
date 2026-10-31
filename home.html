@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KUGOO.gg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="loader-screen" id="loaderScreen" aria-live="polite">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Welcome</div>
+    </div>
+
+    <div class="subscribe-modal" id="subscribeModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="subscribeTitle">
+      <div class="subscribe-modal__backdrop" data-close-modal="true"></div>
+      <div class="subscribe-modal__panel">
+        <button class="subscribe-modal__close" type="button" aria-label="Закрыть">×</button>
+        <div class="subscribe-modal__icon">✓</div>
+        <h3 id="subscribeTitle">Спасибо!</h3>
+        <p>Вы успешно подписались на новости. Здравствуйте, <strong id="subscribeUserText">User</strong>.</p>
+        <button class="subscribe-modal__button" type="button" data-close-modal="true">Понятно</button>
+      </div>
+    </div>
+
+    <button class="welcome-audio-button" type="button" aria-label="Play welcome audio">🔊</button>
+
+    <div class="page-shell">
+      <header class="top-header">
+        <div class="container top-header__inner">
+          <nav class="top-links" aria-label="Дополнительно">
+            <a href="#">Сервис</a>
+            <a href="#">Сотрудничество</a>
+            <a href="#">Заказать звонок</a>
+          </nav>
+
+          <div class="top-contact" aria-label="Телефон">
+            <span class="phone-icon">◔</span>
+            <a href="tel:+78005055461">+7 (800) 505-54-61</a>
+          </div>
+        </div>
+      </header>
+
+      <header class="main-header">
+        <div class="container main-header__inner">
+          <div class="brand-wrap" aria-label="Логотип KUGO">
+            <div class="brand">KUGO</div>
+          </div>
+
+          <button class="mobile-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="catalog-button" aria-label="Каталог товаров">
+            <a href="#" class="catalog-link">Каталог</a>
+          </nav>
+
+          <div class="search-panel" role="search">
+            <button class="search-select" type="button">Везде</button>
+            <span class="search-divider"></span>
+            <input type="text" placeholder="Искать самокат KUGO" aria-label="Поиск" />
+            <button class="search-submit" type="submit" aria-label="Поиск">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.5 4a6.5 6.5 0 0 1 5.08 11.08l4.37 4.37 1.41-1.41-4.37-4.37A6.5 6.5 0 1 1 10.5 4zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="header-actions" aria-label="Действия пользователя">
+            <button class="icon-button" type="button" aria-label="Избранное">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 20.25l-1.45-1.32C5.4 14.36 2 11.28 2 7.5A4.5 4.5 0 0 1 6.5 3c1.74 0 3.41.81 4.5 2.09A6.13 6.13 0 0 1 15.5 3 4.5 4.5 0 0 1 20 7.5c0 3.78-3.4 6.86-8.55 11.43L12 20.25z"/>
+              </svg>
+            </button>
+            <button class="icon-button" type="button" aria-label="Сравнить">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 19h2V8H6v11zm5 0h2V5h-2v14zm5 0h2v-8h-2v8z"/>
+              </svg>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Переключить тему" aria-pressed="false">
+              <span class="theme-toggle__icon">☀️</span>
+            </button>
+            <button class="register-button" type="button" aria-label="Регистрация" data-open-subscribe="true">
+              Регистрация
+            </button>
+            <button class="cart-button" type="button" aria-label="Корзина">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 18a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm9 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM7 16h10.4a1 1 0 0 0 .98-.8l1.8-8.2A1 1 0 0 0 19.2 6H6.05L5.6 3.7A1 1 0 0 0 4.63 3H2v2h2.17l2.38 10.68L7 16zm0-2L6.3 8h12.8l-1.4 6H7z"/>
+              </svg>
+              <span>Корзина</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="subnav">
+        <div class="container subnav__inner">
+          <a href="#">О магазине</a>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Доставка в оплата</a>
+          <a href="#">Тест-драйв</a>
+          <a href="#">Блог</a>
+          <a href="#">Контакты</a>
+          <a href="#">Акции</a>
+          <span class="discount-tag">%</span>
+        </div>
+      </div>
+
+      <nav class="mobile-menu" aria-label="Мобильное меню">
+        <div class="container mobile-menu__inner">
+          <a href="#">О магазине</a>
+          <a href="#">Доставка и оплата</a>
+          <a href="#">Тест-драйв</a>
+          <a href="#">Блог</a>
+          <a href="#">Контакты</a>
+          <a href="#">Акции</a>
+        </div>
+      </nav>
+
+      <main class="page-content">
+        <section class="hero">
+          <div class="hero__main">
+            <div class="hero__content">
+              <span class="hero__badge">Новинка</span>
+
+              <h1>
+                ЭЛЕКТРОСАМОКАТЫ KUGOO KIRIN <br />
+                ОТ ОФИЦИАЛЬНОГО ДИЛЕРА
+              </h1>
+
+              <p>с бесплатной доставкой по РФ от 1 дня</p>
+
+              <button>Перейти в каталог</button>
+
+              <div class="hero__slider">
+                <span>‹</span>
+                <b>1</b>
+                <i></i>
+                <b>5</b>
+                <span>›</span>
+              </div>
+            </div>
+
+            <img class="hero__scooter" src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin" />
+
+            <div class="hero__test">
+              ⚡ <span>Тест-драйв и обучение</span>
+              <b>БЕСПЛАТНО</b>
+            </div>
+          </div>
+
+          <div class="hero__bottom">
+            <div class="hero__item">
+              <h3>ГАРАНТИЯ 1 ГОД</h3>
+              <p>на весь ассортимент</p>
+            </div>
+
+            <div class="hero__item">
+              <h3>РАССРОЧКА</h3>
+              <p>от 6 месяцев</p>
+            </div>
+
+            <div class="hero__item">
+              <h3>ПОДАРКИ</h3>
+              <p>и бонусам к покупкам</p>
+            </div>
+
+            <div class="hero__rating">
+              <div class="ya">Я</div>
+
+              <div>
+                <small>Яндекс отзывы</small>
+                <strong>⭐ 4,9</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="products">
+          <div class="products__inner">
+            <div class="products__header">
+              <h2>ЭЛЕКТРОСАМОКАТЫ</h2>
+
+              <div class="products__tabs" aria-label="Категории">
+                <button class="is-active">Все</button>
+                <button>Для города</button>
+                <button>Для взрослых</button>
+                <button>Для детей</button>
+              </div>
+            </div>
+
+            <div class="products__grid">
+              <article class="product-card">
+                <div class="product-card__imagebox">
+                  <span class="product-card__label">ХИТ</span>
+                  <button class="product-card__tag product-card__tag--sm">New</button>
+                  <img src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin M4" />
+                </div>
+
+                <div class="product-card__body">
+                  <h3>Kugoo Kirin M4</h3>
+
+                  <div class="product-card__specs">
+                    <span>2000 мах</span>
+                    <span>1.2 л.с.</span>
+                    <span>60 км/ч</span>
+                    <span>5 часов</span>
+                  </div>
+
+                  <div class="product-card__price-row">
+                    <div class="product-card__price">
+                      <span class="old-price">39 900 ₽</span>
+                      <strong>29 900 ₽</strong>
+                    </div>
+
+                    <button class="product-card__favorite" aria-label="Добавить в избранное">♡</button>
+                  </div>
+
+                  <button class="product-card__button">Купить в 1 клик</button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__imagebox">
+                  <span class="product-card__label product-card__label--green">ХИТ</span>
+                  <button class="product-card__tag product-card__tag--sm product-card__tag--green">New</button>
+                  <img src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin M4" />
+                </div>
+
+                <div class="product-card__body">
+                  <h3>Kugoo Kirin M4</h3>
+
+                  <div class="product-card__specs">
+                    <span>2000 мах</span>
+                    <span>1.2 л.с.</span>
+                    <span>60 км/ч</span>
+                    <span>5 часов</span>
+                  </div>
+
+                  <div class="product-card__price-row">
+                    <div class="product-card__price">
+                      <span class="old-price">39 900 ₽</span>
+                      <strong>29 900 ₽</strong>
+                    </div>
+
+                    <button class="product-card__favorite" aria-label="Добавить в избранное">♡</button>
+                  </div>
+
+                  <button class="product-card__button">Купить в 1 клик</button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__imagebox">
+                  <span class="product-card__label">ХИТ</span>
+                  <button class="product-card__tag product-card__tag--sm">New</button>
+                  <img src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin M4" />
+                </div>
+
+                <div class="product-card__body">
+                  <h3>Kugoo Kirin M4</h3>
+
+                  <div class="product-card__specs">
+                    <span>2000 мах</span>
+                    <span>1.2 л.с.</span>
+                    <span>60 км/ч</span>
+                    <span>5 часов</span>
+                  </div>
+
+                  <div class="product-card__price-row">
+                    <div class="product-card__price">
+                      <span class="old-price">39 900 ₽</span>
+                      <strong>29 900 ₽</strong>
+                    </div>
+
+                    <button class="product-card__favorite" aria-label="Добавить в избранное">♡</button>
+                  </div>
+
+                  <button class="product-card__button">Купить в 1 клик</button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__imagebox">
+                  <span class="product-card__label">ХИТ</span>
+                  <button class="product-card__tag product-card__tag--sm">New</button>
+                  <img src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin M4" />
+                </div>
+
+                <div class="product-card__body">
+                  <h3>Kugoo Kirin M4</h3>
+
+                  <div class="product-card__specs">
+                    <span>2000 мах</span>
+                    <span>1.2 л.с.</span>
+                    <span>60 км/ч</span>
+                    <span>5 часов</span>
+                  </div>
+
+                  <div class="product-card__price-row">
+                    <div class="product-card__price">
+                      <span class="old-price">39 900 ₽</span>
+                      <strong>29 900 ₽</strong>
+                    </div>
+
+                    <button class="product-card__favorite" aria-label="Добавить в избранное">♡</button>
+                  </div>
+
+                  <button class="product-card__button">Купить в 1 клик</button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__imagebox">
+                  <span class="product-card__label product-card__label--green">ХИТ</span>
+                  <button class="product-card__tag product-card__tag--sm product-card__tag--green">New</button>
+                  <img src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin M4" />
+                </div>
+
+                <div class="product-card__body">
+                  <h3>Kugoo Kirin M4</h3>
+
+                  <div class="product-card__specs">
+                    <span>2000 мах</span>
+                    <span>1.2 л.с.</span>
+                    <span>60 км/ч</span>
+                    <span>5 часов</span>
+                  </div>
+
+                  <div class="product-card__price-row">
+                    <div class="product-card__price">
+                      <span class="old-price">39 900 ₽</span>
+                      <strong>29 900 ₽</strong>
+                    </div>
+
+                    <button class="product-card__favorite" aria-label="Добавить в избранное">♡</button>
+                  </div>
+
+                  <button class="product-card__button">Купить в 1 клик</button>
+                </div>
+              </article>
+
+              <article class="product-card">
+                <div class="product-card__imagebox">
+                  <span class="product-card__label">ХИТ</span>
+                  <button class="product-card__tag product-card__tag--sm">New</button>
+                  <img src="./images/6V7A6482_adobespark 2 (1).png" alt="Kugoo Kirin M4" />
+                </div>
+
+                <div class="product-card__body">
+                  <h3>Kugoo Kirin M4</h3>
+
+                  <div class="product-card__specs">
+                    <span>2000 мах</span>
+                    <span>1.2 л.с.</span>
+                    <span>60 км/ч</span>
+                    <span>5 часов</span>
+                  </div>
+
+                  <div class="product-card__price-row">
+                    <div class="product-card__price">
+                      <span class="old-price">39 900 ₽</span>
+                      <strong>29 900 ₽</strong>
+                    </div>
+
+                    <button class="product-card__favorite" aria-label="Добавить в избранное">♡</button>
+                  </div>
+
+                  <button class="product-card__button">Купить в 1 клик</button>
+                </div>
+              </article>
+            </div>
+
+            <div class="feature-panels">
+              <article class="feature-panel feature-panel--model">
+                <div class="feature-panel__content">
+                  <h3>ПОДБОР МОДЕЛИ<br />ЭЛЕКТРОСАМОКАТА</h3>
+                  <p>Подберите самокат под ваши критерии</p>
+                  <a href="#">Подробнее</a>
+                </div>
+                <img src="./images/6V7A6501-removebg-preview 1.png" alt="Scooter" />
+              </article>
+
+              <article class="feature-panel feature-panel--service">
+                <div class="feature-panel__content">
+                  <h3>СЕРВИСНОЕ<br />ОБСЛУЖИВАНИЕ</h3>
+                  <p>Купите сервисный центр в России</p>
+                  <a href="#">Подробнее</a>
+                </div>
+                <img src="./images/woman-with-electric-drill-yellow-background-removebg-preview 1.png" alt="Service" />
+              </article>
+            </div>
+
+            <article class="delivery-banner">
+              <div class="delivery-banner__image">
+                <img src="./images/дрон 1.png" alt="Drone delivery" />
+              </div>
+
+              <div class="delivery-banner__content">
+                <span class="delivery-banner__tag">Акция</span>
+                <h3>БЕСПЛАТНАЯ ДОСТАВКА<br />ЭЛЕКТРОСАМОКАТОВ<br />ПО РОССИИ ДО 01.09</h3>
+                <button>Подробнее</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="email-signup" aria-label="Подписка на новости">
+          <div class="container email-signup__inner">
+            <div class="email-signup__content">
+              <span class="email-signup__tag">Новинки и акции</span>
+              <h2>Получайте актуальные предложения на почту</h2>
+            </div>
+
+            <form class="email-signup__form" action="#" method="post">
+              <label class="sr-only" for="emailInput">Ваш email</label>
+              <input id="emailInput" type="email" value="mustaforasulov52@gmail.com" placeholder="Введите ваш email" aria-label="Ваш email" required />
+              <button type="submit">Подписаться</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="popular-categories">
+          <div class="container popular-categories__inner">
+            <div class="popular-categories__top">
+              <h2>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h2>
+
+              <div class="popular-categories__promo">
+                <div class="popular-categories__promo-badge">Менеджер оптом на выбор</div>
+                <button type="button">Задать вопрос</button>
+              </div>
+            </div>
+
+            <div class="popular-categories__grid">
+              <article class="category-card category-card--1">
+                <div class="category-card__overlay"></div>
+                <span>Робот-пылесосы<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--2">
+                <div class="category-card__overlay"></div>
+                <span>Электровелосипеды<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--3">
+                <div class="category-card__overlay"></div>
+                <span>Весы<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--4">
+                <div class="category-card__overlay"></div>
+                <span>Робот-пылесосы<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--5">
+                <div class="category-card__overlay"></div>
+                <span>Весы<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--6">
+                <div class="category-card__overlay"></div>
+                <span>Робот-пылесосы<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--7">
+                <div class="category-card__overlay"></div>
+                <span>Электровелосипеды<br />от 29 900 ₽</span>
+              </article>
+
+              <article class="category-card category-card--8">
+                <div class="category-card__overlay"></div>
+                <span>Весы<br />от 29 900 ₽</span>
+              </article>
+            </div>
+
+            <div class="popular-categories__action">
+              <button type="button">Смотреть все</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <button class="back-to-top" type="button" aria-label="Наверх">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 4.5a1 1 0 0 1 .7.29l6.5 6.5-1.42 1.42L13 8.41V18h-2V8.41L6.22 12.71 4.8 11.29l6.5-6.5a1 1 0 0 1 .7-.29z"/>
+      </svg>
+    </button>
+
+    <script>
+      let welcomeVoiceStarted = false;
+
+      function playWelcomeVoice() {
+        if (!('speechSynthesis' in window) || welcomeVoiceStarted) return;
+
+        const utterance = new SpeechSynthesisUtterance('Добро пожаловать');
+        utterance.lang = 'ru-RU';
+        utterance.pitch = 1.1;
+        utterance.rate = 0.9;
+        utterance.volume = 0.5;
+
+        try {
+          window.speechSynthesis.cancel();
+          window.speechSynthesis.speak(utterance);
+          welcomeVoiceStarted = true;
+        } catch (error) {
+          console.log('Speech synthesis failed.', error);
+        }
+      }
+
+      const welcomeAudioButton = document.querySelector('.welcome-audio-button');
+      const themeToggle = document.querySelector('.theme-toggle');
+      const themeToggleIcon = document.querySelector('.theme-toggle__icon');
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const headerRegisterButton = document.querySelector('[data-open-subscribe="true"]');
+      const subscribeForm = document.querySelector('.email-signup__form');
+      const subscribeModal = document.getElementById('subscribeModal');
+      const subscribeUserText = document.getElementById('subscribeUserText');
+
+      function getDisplayUserName(emailValue) {
+        const normalized = (emailValue || '').trim();
+        if (!normalized) return 'User';
+
+        const localPart = normalized.split('@')[0];
+        return localPart || 'User';
+      }
+
+      function openSubscribeModal(emailValue) {
+        if (!subscribeModal) return;
+
+        if (subscribeUserText) {
+          subscribeUserText.textContent = getDisplayUserName(emailValue);
+        }
+
+        subscribeModal.classList.add('is-open');
+        subscribeModal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeSubscribeModal() {
+        if (!subscribeModal) return;
+        subscribeModal.classList.remove('is-open');
+        subscribeModal.setAttribute('aria-hidden', 'true');
+      }
+
+      function submitEmailToMailClient(emailValue) {
+        const mailtoLink = `mailto:mustaforasulov52@gmail.com?subject=${encodeURIComponent('Подписка на новости KUGO')}&body=${encodeURIComponent(`Здравствуйте!\n\nХочу подписаться на новости.\nEmail: ${emailValue}\n`)}`;
+
+        const link = document.createElement('a');
+        link.href = mailtoLink;
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function applyTheme(isDark) {
+        document.body.classList.toggle('theme-dark', isDark);
+        document.body.classList.toggle('theme-light', !isDark);
+
+        if (themeToggle) {
+          themeToggle.setAttribute('aria-pressed', String(isDark));
+          themeToggle.classList.toggle('is-dark', isDark);
+        }
+
+        if (themeToggleIcon) {
+          themeToggleIcon.textContent = isDark ? '🌙' : '☀️';
+        }
+      }
+
+      window.addEventListener('load', () => {
+        const loaderScreen = document.getElementById('loaderScreen');
+
+        applyTheme(false);
+
+        setTimeout(() => {
+          if (loaderScreen) {
+            loaderScreen.classList.add('hidden');
+          }
+
+          try {
+            playWelcomeVoice();
+          } catch (error) {
+            console.log('Autoplay audio is blocked by the browser policy.', error);
+          }
+        }, 1500);
+      });
+
+      if (welcomeAudioButton) {
+        welcomeAudioButton.addEventListener('click', () => {
+          playWelcomeVoice();
+        });
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const nextIsDark = !document.body.classList.contains('theme-dark');
+          applyTheme(nextIsDark);
+        });
+      }
+
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('is-open');
+          mobileMenuToggle.classList.toggle('is-active', isOpen);
+          mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+
+      if (headerRegisterButton) {
+        headerRegisterButton.addEventListener('click', () => {
+          openSubscribeModal('mustaforasulov52@gmail.com');
+        });
+      }
+
+      if (subscribeForm) {
+        subscribeForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const emailInput = subscribeForm.querySelector('input[type="email"]');
+          const emailValue = emailInput && emailInput.value ? emailInput.value.trim() : 'mustaforasulov52@gmail.com';
+
+          try {
+            submitEmailToMailClient(emailValue);
+          } catch (error) {
+            console.warn('mailto failed, using fallback flow.', error);
+          }
+
+          openSubscribeModal(emailValue);
+        });
+      }
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        if (target.matches('[data-close-modal="true"]') || target.classList.contains('subscribe-modal__close')) {
+          closeSubscribeModal();
+        }
+
+        if (target === subscribeModal) {
+          closeSubscribeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && subscribeModal) {
+          closeSubscribeModal();
+        }
+      });
+
+      const backToTopButton = document.querySelector('.back-to-top');
+
+      function toggleBackToTop() {
+        if (!backToTopButton) return;
+        backToTopButton.classList.toggle('is-visible', window.scrollY > 420);
+      }
+
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+      toggleBackToTop();
+
+      if (backToTopButton) {
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      window.addEventListener('beforeunload', () => {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+      });
+    </script>
+  </body>
+</html>
